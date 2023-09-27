@@ -22,6 +22,8 @@ header {
 .navContainer {
   display: flex;
   flex-flow: row wrap;
+  justify-content: space-between;
+  padding: 20px;
 }
 
 .navContainer li {
@@ -68,22 +70,18 @@ header {
   padding-right:10em;
 }
 
-.hero-button {
-  height: 3em;
-  width: 20em;
-}
-
 .highlights {
   padding: 20px;
   background-color: white;
 }
 
 .highlightsTop {
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  gap: 1em;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 5em;
+  padding-left: 5em;
+  padding-top: 3em;
+  padding-bottom: 3em;
 }
 
 .highlightsBottom {
@@ -127,13 +125,16 @@ img {
 
 .testimonials {
   padding: 8px;
-  margin:auto;
+  margin: auto;
+  padding-left: 35%;
 }
 
 button {
   font-weight: bolder;
   border-radius: 25px;
   background-color: #F4CE14;
+  height: 3em;
+  width: 20em;
 }
 
 .about {
