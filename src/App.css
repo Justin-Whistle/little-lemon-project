@@ -184,3 +184,22 @@ button {
   font-weight: bold;
   text-decoration: underline;
 }
+
+.booking-form {
+  display: grid;
+  max-width: 200px;
+  padding-top:20px;
+  gap: 20px;
+  margin: auto;
+  color:#495E57;
+  font-family: 'Karla';
+  font-weight: bold;
+}
+
+.reserve-button {
+  font-weight: bolder;
+  border-radius: 25px;
+  background-color: #F4CE14;
+  height: 3em;
+  width: 15em;
+}

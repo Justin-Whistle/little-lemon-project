@@ -1,6 +1,6 @@
 import './App.css';
 import Home from './Home';
-import Hero from './Hero';
+import BookingPage from './BookingPage';
 import Highlights from './Highlights';
 import About from './About';
 import Login from './Login';
@@ -26,7 +26,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='About' element={<About />} />
         <Route path='Menu' element={<Highlights />} />
-        <Route path='Reservations' element={<Hero />} />
+        <Route path='Reservations' element={<BookingPage />} />
         <Route path='OrderOnline' element={<Highlights />} />
         <Route path='Login' element={<Login />} />
       </Routes>
