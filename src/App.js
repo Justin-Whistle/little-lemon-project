@@ -5,6 +5,7 @@ import Highlights from './Highlights';
 import About from './About';
 import Login from './Login';
 import { Routes, Route, Link } from 'react-router-dom';
+import ConfirmedBooking from './ConfirmedBooking';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
       </nav>
       <hr></hr>
       <Routes>
+        <Route path='ConfirmedBooking' element={<ConfirmedBooking />} />
         <Route path='/' element={<Home />} />
         <Route path='About' element={<About />} />
         <Route path='Menu' element={<Highlights />} />

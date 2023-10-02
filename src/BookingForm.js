@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function BookingForm(props) {
     const [name, setName] = useState("");
@@ -8,37 +9,30 @@ export default function BookingForm(props) {
     const [guests, setGuests] = useState("1");
     const [occasion, setOccasion] = useState("Lunch");
 
+    const generateKey = (pre) => {
+        return `${ pre }_${ new Date().getTime() }`;
+    }
+
     const [finalTime, setFinalTime] = useState(
         props.availableTimes.map(times => (
         <option key={times}>{times}</option>
       )));
 
-    // function handleDateChange(e) {
-    //     setDate(e.target.value);
-
-    //     var stringify = e.target.value;
-    //     const date = new Date(stringify);
-
-    //     props.updateTimes(date);
-
-    //     setFinalTime(props.availableTimes.map(times => (
-    //     <option key={times}>{times}</option>
-    //     )));
-    // }
-
     const handleSubmit = (e) => {
-        e.preventDefault();
-        setName("");
-        setDate("");
-        setTime("");
-        setGuests("1");
-        setOccasion("");
-        console.log({ name, date, time, guests, occasion })
+        // e.preventDefault();
+        setDate(e.target.value);
+        var stringify = e.target.value;
+        const date = new Date(stringify);
+
+        props.updateTimes(date);
+
+        setFinalTime(props.availableTimes.map((times) => <option key={ generateKey(times)}>{times}</option>));
+        // console.log(props.availableTimes)
     }
 
     return (
         <div>
-            <form className="booking-form" onSubmit={handleSubmit}>
+            <form className="booking-form">
                 <label htmlFor="name">Name</label>
                 <input
                     type=""
@@ -51,8 +45,9 @@ export default function BookingForm(props) {
                 <input
                     type="date"
                     id="date"
+                    required
                     value={date}
-                    onChange={ e => setDate(e.target.value)}>
+                    onChange={handleSubmit}>
                 </input>
                 <label htmlFor="time">Choose time</label>
                 <select id="time" value={time} onChange={e => setTime(e.target.value)}>
@@ -72,7 +67,9 @@ export default function BookingForm(props) {
                     <option value="Birthday">Birthday</option>
                     <option value="Anniversary">Anniversary</option>
                 </select>
-                <input className="reserve-button" type="submit" value="Make Your reservation"></input>
+                <Link to="/ConfirmedBooking">
+                    <input className="reserve-button" type="submit" value="Make Your reservation"></input>
+                </Link>
             </form>
             {/* <p>{availableTimes}</p> */}
         </div>
