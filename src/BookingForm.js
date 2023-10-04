@@ -3,31 +3,28 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function BookingForm(props) {
+  
+    console.log('props', props);
     const [name, setName] = useState("");
     const [date, setDate] = useState("");
-    const [time, setTime] = useState();
     const [guests, setGuests] = useState("1");
     const [occasion, setOccasion] = useState("Lunch");
-
-    const generateKey = (pre) => {
-        return `${ pre }_${ new Date().getTime() }`;
-    }
-
     const [finalTime, setFinalTime] = useState(
-        props.availableTimes.map(times => (
-        <option key={times}>{times}</option>
-      )));
+        props.availableTimes.map((times) => <option key={times}>{times}</option>)
+    )
+    
+    // console.log(availableTimes)
 
-    const handleSubmit = (e) => {
-        // e.preventDefault();
+    const handleDate = (e) => {
+        e.preventDefault();
+
         setDate(e.target.value);
         var stringify = e.target.value;
         const date = new Date(stringify);
 
-        props.updateTimes(date);
+        props.dispatch?.(date);
 
-        setFinalTime(props.availableTimes.map((times) => <option key={ generateKey(times)}>{times}</option>));
-        // console.log(props.availableTimes)
+        setFinalTime(props.availableTimes.map((times) => <option key={times}>{times}</option>));
     }
 
     return (
@@ -47,10 +44,10 @@ export default function BookingForm(props) {
                     id="date"
                     required
                     value={date}
-                    onChange={handleSubmit}>
+                    onChange={handleDate}>
                 </input>
                 <label htmlFor="time">Choose time</label>
-                <select id="time" value={time} onChange={e => setTime(e.target.value)}>
+                <select id="time">
                     {finalTime}
                 </select>
                 <label htmlFor="guests">Party size: {guests}</label>

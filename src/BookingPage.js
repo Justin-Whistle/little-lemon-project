@@ -1,21 +1,13 @@
 // import React, { useReducer } from 'react';
 import BookingForm from './BookingForm';
-import { useReducer } from 'react';
-import { fetchAPI } from './BookingAPI';
+// import { useReducer } from 'react';
 
-export default function BookingPage() {
-
-  const output = fetchAPI(new Date());
-
-  function updateTimes(date) {
-    return fetchAPI(date);
-  }
-
-  const [availableTimes, dispatch] = useReducer(updateTimes, output);
-
+export default function BookingPage(props) {
+  // console.log(props.availableTimes)
   return (
     <>
-        <BookingForm availableTimes={availableTimes} updateTimes={dispatch} />
+      <BookingForm availableTimes={props.availableTimes} dispatch={props.dispatch} submitForm={props.submitForm} />
+      
     </>
   )
 }
