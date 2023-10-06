@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function BookingForm(props) {
-  
+
     console.log('props', props);
     const [name, setName] = useState("");
     const [date, setDate] = useState("");
@@ -12,7 +12,7 @@ export default function BookingForm(props) {
     const [finalTime, setFinalTime] = useState(
         props.availableTimes.map((times) => <option key={times}>{times}</option>)
     )
-    
+
     // console.log(availableTimes)
 
     const handleDate = (e) => {
@@ -68,7 +68,6 @@ export default function BookingForm(props) {
                     <input className="reserve-button" type="submit" value="Make Your reservation"></input>
                 </Link>
             </form>
-            {/* <p>{availableTimes}</p> */}
         </div>
     )
 }
