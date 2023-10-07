@@ -39,6 +39,10 @@ header {
   font-weight: bold;
 }
 
+.navContainer a:hover {
+  color: #F4CE14;
+}
+
  .Main {
   display: grid;
   grid-template-columns: none;
@@ -123,10 +127,20 @@ img {
   padding-left: 15px
 }
 
+.deliveryLink {
+  color: black;
+  font-weight: bold;
+  text-shadow: #F4CE14 1px 0 10px;
+}
+
+.deliveryLink:hover {
+  color:red;
+  text-shadow: black 1px 0 10px;
+}
+
 .testimonials {
   padding: 8px;
   margin: auto;
-  padding-left: 35%;
 }
 
 button {
@@ -135,6 +149,18 @@ button {
   background-color: #F4CE14;
   height: 3em;
   width: 20em;
+}
+
+button:hover {
+  background-color: #495E57;
+  border: solid #F4CE14;
+  color: white;
+}
+
+.reserve-button:hover {
+  background-color: #495E57;
+  border: solid #F4CE14;
+  color: white;
 }
 
 .about {
@@ -158,6 +184,14 @@ button {
 
 .about-right {
   padding-right:10em;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .footer {
@@ -223,4 +257,14 @@ button {
   background-color: #F4CE14;
   height: 3em;
   width: 15em;
+}
+
+.footer li a:hover {
+  color: #F4CE14
+}
+
+.pageFooter {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }

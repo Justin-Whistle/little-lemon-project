@@ -1,4 +1,4 @@
-import { render, screen, act } from '@testing-library/react';
+import { render, screen, act, userEvent } from '@testing-library/react';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import Hero from './Hero';
@@ -34,7 +34,16 @@ describe("Booking Form", () => {
     const timeSelect = screen.getByLabelText("Choose time");
     expect(timeSelect).toBeInTheDocument();
     const timeOptions = screen.getAllByRole("option");
-    expect(timeOptions).toHaveLength(3);
+    expect(timeOptions).toHaveLength(7);
   });
 })
 
+test("checks validation", () => {
+  const handleSubmit = jest.fn()
+  render(<BrowserRouter><BookingForm onSubmit={handleSubmit} /></BrowserRouter>);
+
+  const reserveButton = screen.getByRole('button')
+  fireEvent.click(reserveButton);
+
+  expect(handleSubmit).not.toHaveBeenCalled();
+})

@@ -12,7 +12,7 @@ export default function Hero() {
                 <h3>We are a family owned Mediterranean restaurant, focused on traditional recipes, and served with a modern twist</h3>
                 <br></br>
                 <Link to="/Reservations">
-                <button className='hero-button'>RESERVE A TABLE</button>
+                <button aria-label="On Click" className='hero-button'>RESERVE A TABLE</button>
                 </Link>
             </div>
             <div className='heroRight'>

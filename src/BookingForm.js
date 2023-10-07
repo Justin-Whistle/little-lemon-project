@@ -1,19 +1,21 @@
 import React from 'react'
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 
 export default function BookingForm(props) {
 
-    console.log('props', props);
+    console.log('props', props.availableTimes);
     const [name, setName] = useState("");
     const [date, setDate] = useState("");
     const [guests, setGuests] = useState("1");
-    const [occasion, setOccasion] = useState("Lunch");
+    const [occasion, setOccasion] = useState("");
     const [finalTime, setFinalTime] = useState(
         props.availableTimes.map((times) => <option key={times}>{times}</option>)
     )
 
-    // console.log(availableTimes)
+    const handleSumbit = (e) => {
+        e.preventDefault();
+        props.submitForm(e);
+    };
 
     const handleDate = (e) => {
         e.preventDefault();
@@ -29,8 +31,9 @@ export default function BookingForm(props) {
 
     return (
         <div>
-            <form className="booking-form">
-                <label htmlFor="name">Name</label>
+            <h1 className='title'>Reservation Booking Form</h1>
+            <form aria-label="book a table" className="booking-form" onSubmit={handleSumbit}>
+                <label aria-required="true" htmlFor="name">Name</label>
                 <input
                     type=""
                     required
@@ -38,7 +41,7 @@ export default function BookingForm(props) {
                     value={name}
                     onChange={e => setName(e.target.value)}>
                 </input>
-                <label htmlFor="date">Choose date</label>
+                <label aria-required="true" htmlFor="date">Choose date</label>
                 <input
                     type="date"
                     id="date"
@@ -46,27 +49,26 @@ export default function BookingForm(props) {
                     value={date}
                     onChange={handleDate}>
                 </input>
-                <label htmlFor="time">Choose time</label>
-                <select id="time">
+                <label aria-required="true" htmlFor="time">Choose time</label>
+                <select id="time" required>
                     {finalTime}
                 </select>
-                <label htmlFor="guests">Party size: {guests}</label>
+                <label aria-required="true" htmlFor="guests">Party size: {guests}</label>
                 <input
                     type="range"
+                    required
                     value={guests}
                     placeholder="1" min="1" max="10" id="guests"
                     onChange={e => setGuests(e.target.value)}>
                 </input>
                 <label htmlFor="occasion">Occasion</label>
-                <select id="occasion" value={occasion} onChange={e => setOccasion(e.target.value)}>
+                <select aria-required="true" id="occasion" value={occasion} required onChange={e => setOccasion(e.target.value)}>
                     <option value="Lunch">Lunch</option>
                     <option value="Dinner">Dinner</option>
                     <option value="Birthday">Birthday</option>
                     <option value="Anniversary">Anniversary</option>
                 </select>
-                <Link to="/ConfirmedBooking">
-                    <input className="reserve-button" type="submit" value="Make Your reservation"></input>
-                </Link>
+                <input aria-label="On Click" className='reserve-button' type={"submit"} value={"Make Your Reservation"}></input>
             </form>
         </div>
     )

@@ -53,7 +53,7 @@ function App() {
 
   return (
     <>
-      <nav className='navContainer'>
+      <nav role="navigation" className='navContainer'>
         <img src="./Logo.svg" alt="Little Lemon Logo"></img>
         <ul className='nav'>
           <Link to='/' className='Home'>Home</Link>
