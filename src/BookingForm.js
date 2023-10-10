@@ -3,30 +3,21 @@ import { useState } from 'react';
 
 export default function BookingForm(props) {
 
-    console.log('props', props.availableTimes);
+    // console.log('props', props.availableTimes);
     const [name, setName] = useState("");
     const [date, setDate] = useState("");
+    const [times, setTimes] = useState("");
     const [guests, setGuests] = useState("1");
     const [occasion, setOccasion] = useState("");
-    const [finalTime, setFinalTime] = useState(
-        props.availableTimes.map((times) => <option key={times}>{times}</option>)
-    )
 
     const handleSumbit = (e) => {
         e.preventDefault();
         props.submitForm(e);
     };
 
-    const handleDate = (e) => {
-        e.preventDefault();
-
-        setDate(e.target.value);
-        var stringify = e.target.value;
-        const date = new Date(stringify);
-
-        props.dispatch?.(date);
-
-        setFinalTime(props.availableTimes.map((times) => <option key={times}>{times}</option>));
+    const handleChange = (e) => {
+        setDate(e);
+        props.dispatch(e);
     }
 
     return (
@@ -47,11 +38,11 @@ export default function BookingForm(props) {
                     id="date"
                     required
                     value={date}
-                    onChange={handleDate}>
+                    onChange={(e) => handleChange(e.target.value)}>
                 </input>
                 <label aria-required="true" htmlFor="time">Choose time</label>
-                <select id="time" required>
-                    {finalTime}
+                <select id="time" value={times} required onChange={(e) => setTimes(e.target.value)}>
+                {props.availableTimes.availableTimes.map(availableTimes => {return <option key={availableTimes}>{availableTimes}</option>})}
                 </select>
                 <label aria-required="true" htmlFor="guests">Party size: {guests}</label>
                 <input

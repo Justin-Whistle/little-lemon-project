@@ -43,8 +43,8 @@ function App() {
   function updateTimes(state, date) {
     return { availableTimes: fetchAPI(new Date(date)) }
   }
-  const navigate = useNavigate();
 
+  const navigate = useNavigate();
   function submitForm(formData) {
     if (submitAPI(formData)) {
       navigate("/ConfirmedBooking")
@@ -70,7 +70,8 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='About' element={<About />} />
         <Route path='Menu' element={<Highlights />} />
-        <Route path='Reservations' element={<BookingPage {...{...state, ...{dispatch: dispatch, submitForm: submitForm}}} />} />
+        {/* <Route path='Reservations' element={<BookingPage {...{...state, ...{dispatch: dispatch, submitForm: submitForm}}} />} /> */}
+        <Route path='Reservations' element={<BookingPage availableTimes={state} dispatch={dispatch} submitForm={submitForm} />} />
         <Route path='OrderOnline' element={<Highlights />} />
         <Route path='Login' element={<Login />} />
       </Routes>
